@@ -7,3 +7,5 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set('n', '<Space>e', [[:FloatermNew --autoclose=0 cargo run<CR>]], {buffer=args.buf})
   end
 })
+
+vim.keymap.set('n', '<Space>r', [[:FloatermNew --autoclose=0 ./run.sh<CR>]], {})
