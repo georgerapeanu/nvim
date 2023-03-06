@@ -13,10 +13,12 @@ end
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 -- empty setup using defaults
-require("nvim-tree").setup({})
+require("nvim-tree").setup({
+})
 
+require("nvim-tree.api").tree.toggle_gitignore_filter()
 -- fetch keymap
 local map = vim.api.nvim_set_keymap
 
 -- map the key n to run the command :NvimTreeToggle
-map('n', 'n', [[:NvimTreeToggle<CR>]], {})
+map('n', 't', [[:NvimTreeToggle<CR>]], {})
