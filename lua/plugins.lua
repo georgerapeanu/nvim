@@ -22,4 +22,10 @@ return require('packer').startup(function(use)
   -- Dracula theme for styling
   use 'Mofiqul/dracula.nvim'
   use 'voldikss/vim-floaterm'
+
+  -- markdown-preview
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
 end)
