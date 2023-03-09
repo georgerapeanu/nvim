@@ -1,3 +1,5 @@
+-- reference https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -61,4 +63,19 @@ require('lspconfig')['html'].setup{
 require('lspconfig')['clangd'].setup{
   on_attach = on_attach,
   flags=lsp_flags,
+}
+
+require('lspconfig')['pylsp'].setup{
+  on_attach = on_attach,
+  flags=lsp_flags,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391'},
+          maxLineLength = 120
+        }
+      }
+    }
+  }
 }
