@@ -94,3 +94,8 @@ require('lspconfig')['pylsp'].setup{
     }
   }
 }
+
+require('lspconfig')['cmake'].setup{
+  on_attach = on_attach,
+  flags=lsp_flags,
+}

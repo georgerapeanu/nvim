@@ -16,5 +16,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern={"CMakeLists.txt"},
+  callback = function(args)
+    os.execute("cmake " .. '"' .. vim.loop.cwd() .. '" > /dev/null 2>&1')
+    vim.cmd [[:LspRestart]]
+  end
+})
 
 vim.keymap.set('n', '<Space>r', [[:FloatermNew --autoclose=0 ./run.sh<CR>]], {})
