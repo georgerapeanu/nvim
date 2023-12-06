@@ -1,17 +1,14 @@
-local mark = require('harpoon.mark')
-local ui = require('harpoon.ui')
-vim.keymap.set('n', '<Space>ha', mark.add_file, {})
-vim.keymap.set('n', '<Space>hr', mark.rm_file, {})
-vim.keymap.set('n', '<Space>hu', ui.toggle_quick_menu, {})
-vim.keymap.set('n', '<Space>hn', ui.nav_next, {})
-vim.keymap.set('n', '<Space>hp', ui.nav_prev, {})
-vim.keymap.set('n', '<Space>h1', function() ui.nav_file(1) end, {})
-vim.keymap.set('n', '<Space>h2', function() ui.nav_file(2) end, {})
-vim.keymap.set('n', '<Space>h3', function() ui.nav_file(3) end, {})
-vim.keymap.set('n', '<Space>h4', function() ui.nav_file(4) end, {})
-vim.keymap.set('n', '<Space>h5', function() ui.nav_file(5) end, {})
-vim.keymap.set('n', '<Space>h6', function() ui.nav_file(6) end, {})
-vim.keymap.set('n', '<Space>h7', function() ui.nav_file(7) end, {})
-vim.keymap.set('n', '<Space>h8', function() ui.nav_file(8) end, {})
-vim.keymap.set('n', '<Space>h9', function() ui.nav_file(9) end, {})
-require("telescope").load_extension('harpoon')
+local harpoon = require("harpoon")
+
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+
+vim.keymap.set("n", "<Space>a", function() harpoon:list():append() end)
+vim.keymap.set("n", "<Space>r", function() harpoon:list():remove() end)
+vim.keymap.set("n", "<Space>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+vim.keymap.set("n", "<Space>1", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<Space>2", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<Space>3", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<Space>4", function() harpoon:list():select(4) end)

@@ -15,7 +15,11 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'                            
   use 'hrsh7th/vim-vsnip'
   use 'nvim-lua/plenary.nvim'
-  use 'ThePrimeagen/harpoon'
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  }
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {

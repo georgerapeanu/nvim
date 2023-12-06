@@ -24,4 +24,11 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   end
 })
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = {"*.ml", "*.mli", "*.menhir", "*.interface", "*.ocamllex", "*.re"},
+  callback = function(args)
+    os.execute("dune fmt > /dev/null 2>&1")
+  end
+})
+
 vim.keymap.set('n', '<Space>r', [[:FloatermNew --autoclose=0 ./run.sh<CR>]], {})
